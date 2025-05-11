@@ -9,7 +9,7 @@ terraform {
       source  = "hashicorp/random"
       version = "~> 3.5.1"
     }
-
+    #cert for k8
     tls = {
       source  = "hashicorp/tls"
       version = "~> 4.0.4"
@@ -25,11 +25,11 @@ terraform {
       version = "~> 2.23.0"
     }
   }
-
+  #create TF file in bucket otherwise other user will create additional IAC issues
   backend "s3" {
-    bucket = "gitopsterrastate"
+    bucket = "vprofileactionsfm"
     key    = "terraform.tfstate"
-    region = "us-east-2"
+    region = "us-east-1"
   }
 
   required_version = "~> 1.6.3"
